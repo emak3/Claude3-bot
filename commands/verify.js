@@ -23,6 +23,6 @@ module.exports = {
             .setStyle(ButtonStyle.Secondary);
         const buttons = new ActionRowBuilder()
             .addComponents(confirm, cancel);
-        await interaction.reply({ content: `【 ${getConfig().EMAIL_USER} 】から認証コードが届きます。\n> 🔗 [招待リンク](https://discord.gg/x836YNQskN)`, components: [buttons] });
+        await interaction.reply({ content: `【 ${getConfig().EMAIL_USER} 】から認証コードが届きます。\n> 🔗 [招待リンク](${getConfig().inviteLink})`, components: [buttons] });
     }
 }

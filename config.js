@@ -15,6 +15,7 @@ let config = {
   "verifyRoleId": process.env.VERIFY_ROLE_ID,
   "EMAIL_USER": process.env.EMAIL_USER,
   "EMAIL_PASS": process.env.EMAIL_PASS,
+  "inviteLink": process.env.INVITE_LINK
 };
 const channelId = config.specialSystemPlanClientId;
 async function oldHanhan(client) {
