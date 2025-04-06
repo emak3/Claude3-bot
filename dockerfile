@@ -1,0 +1,8 @@
+FROM node:20
+
+ARG USER_NAME=app
+ARG USER_ID=${WORKDIR}
+
+RUN useradd -m --uid ${USER_ID} ${USER_NAME}
+
+USER ${USER_NAME}
