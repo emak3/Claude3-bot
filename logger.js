@@ -1,5 +1,4 @@
 const log4js = require('log4js');
-const { getConfig } = require('./config.js');
 
 log4js.configure({
 	appenders: {
@@ -13,5 +12,5 @@ log4js.configure({
 	}
 });
 
-const log = log4js.getLogger(getConfig().profile);
+const log = log4js.getLogger(process.env.PROFILE);
 module.exports = log;
