@@ -1,6 +1,6 @@
 {
     "name": "Ubuntu",
-    "dockerComposeFile": "docker-compose.yml",  
+    "dockerComposeFile": "./docker-compose.yml",  
     "service": "devcontainer",
     "workspaceFolder": "/app",
     "remoteUser": "vscode",
