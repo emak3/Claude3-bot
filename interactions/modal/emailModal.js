@@ -1,5 +1,6 @@
 const { InteractionType, MessageFlags } = require("discord.js");
-const { sendVerificationEmail } = require('../../email.js');
+const { sendVerificationEmail } = require('../../email/mailer.js');
+//const { sendVerificationEmail } = require('../../email.js');
 const { getConfig } = require('../../config.js');
 const nodemailer = require('nodemailer');
 const log = require("../../logger.js");
@@ -27,7 +28,7 @@ module.exports = async function (interaction) {
 
             try {
                 await sendVerificationEmail(email, code);
-                await interaction.reply({ content: `認証コードを **${email}** に送信しました！\n迷惑メールフォルダーに入っている場合があります。`, ephemeral: true });
+                await interaction.reply({ content: `認証コードを **${email}** に送信しました！\n迷惑メールフォルダーに入っている場合があります。`, flags: MessageFlags.Ephemeral });
             } catch (err) {
                 console.error(err);
                 await interaction.reply({ content: 'メール送信に失敗しました。', flags: MessageFlags.Ephemeral });
