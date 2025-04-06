@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  playground:
+    container_name: 'node'
+    hostname: 'node'
+
+
+    build: .
+    restart: always
+    working_dir: '/app'
+    tty: true
+    volumes:
+      - type: bind
+        source: ../app
+        target: /app
