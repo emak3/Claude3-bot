@@ -28,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ema1in/github-actions-test:latest
+          tags: ema1in/takeshi-kun:latest

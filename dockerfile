@@ -1,8 +1,9 @@
 FROM node:20
 
-ARG USER_NAME=app
-ARG USER_ID=${WORKDIR}
+WORKDIR /app
 
-RUN useradd -m --uid ${USER_ID} ${USER_NAME}
+COPY . /app
 
-USER ${USER_NAME}
+RUN npm ci
+
+CMD ["npm", "start"]
