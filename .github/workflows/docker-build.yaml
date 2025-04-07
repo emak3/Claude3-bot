@@ -1,31 +1,55 @@
 name: ci
+
 on:
   push:
     branches:
       - 'main'
+
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Set up QEMU
+
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to DockerHub
+
+      - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
+
+      - name: Create release.env
+        run: |
+          echo "PROFILE=${{ secrets.PROFILE }}" >> release.env
+          echo "TOKEN=${{ secrets.TOKEN }}" >> release.env
+          echo "CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}" >> release.env
+          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> release.env
+          echo "  CHANNEL_ID_1=${{ secrets.CHANNEL_ID_1 }}" >> release.env
+          echo "  CHANNEL_ID_2=${{ secrets.CHANNEL_ID_2 }}" >> release.env
+          echo "  SPECIAL_CHANNEL_ID_1=${{ secrets.SPECIAL_CHANNEL_ID_1 }}" >> release.env
+          echo "  SPECIAL_CHANNEL_ID_2=${{ secrets.SPECIAL_CHANNEL_ID_2 }}" >> release.env
+          echo "  SYSTEM_PLAN=${{ secrets.SYSTEM_PLAN }}" >> release.env
+          echo "  SPECIAL_SYSTEM_PLAN=${{ secrets.SPECIAL_SYSTEM_PLAN }}" >> release.env
+          echo "  SPECIAL_SYSTEM_PLAN_CHANNEL_ID=${{ secrets.SPECIAL_SYSTEM_PLAN_CHANNEL_ID }}" >> release.env
+          echo "  SP_MODEL=${{ secrets.SP_MODEL }}" >> release.env
+          echo "  NL_MODEL=${{ secrets.NL_MODEL }}" >> release.env
+          echo "  VERIFY_ROLE_ID=${{ secrets.VERIFY_ROLE_ID }}" >> release.env
+          echo "  EMAIL_USER=${{ secrets.EMAIL_USER }}" >> release.env
+          echo "  EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> release.env
+          echo "  INVITE_LINK=${{ secrets.INVITE_LINK }}" >> release.env
+
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: ema1in/takeshi-kun:latest
+
+      - name: Run Docker container with custom env file
+        run: docker run --env-file release.env ema1in/takeshi-kun:latest
