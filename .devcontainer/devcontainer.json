@@ -1,15 +1,14 @@
 {
-    "name": "Ubuntu",
-    "dockerComposeFile": "./docker-compose.yml",  
-    "service": "devcontainer",
-    "workspaceFolder": "/app",
-    "remoteUser": "vscode",
-    "customizations": {
-      "vscode": {
-
-        "extensions": [
-          "EditorConfig.EditorConfig"
-        ]
-      }
-    }
-  }
+  "name": "Dev App",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": ["--env-file", "dev.env"],
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "postCreateCommand": "npm ci"
+}
