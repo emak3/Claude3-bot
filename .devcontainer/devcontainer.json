@@ -3,7 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "runArgs": ["--env-file", "release.env"],
+  "runArgs": ["--env-file", "dev.env"],
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"

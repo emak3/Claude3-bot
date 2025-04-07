@@ -47,4 +47,4 @@ COPY . /app
 
 RUN npm ci
 
-CMD ["node", "--env-file=release.env", "index.js"]
+CMD ["node", "--env-file=dev.env", "index.js"]

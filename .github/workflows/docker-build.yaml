@@ -24,25 +24,25 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Create release.env
+      - name: Create dev.env
         run: |
-          echo "PROFILE=${{ secrets.PROFILE }}" >> release.env
-          echo "TOKEN=${{ secrets.TOKEN }}" >> release.env
-          echo "CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}" >> release.env
-          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> release.env
-          echo "  CHANNEL_ID_1=${{ secrets.CHANNEL_ID_1 }}" >> release.env
-          echo "  CHANNEL_ID_2=${{ secrets.CHANNEL_ID_2 }}" >> release.env
-          echo "  SPECIAL_CHANNEL_ID_1=${{ secrets.SPECIAL_CHANNEL_ID_1 }}" >> release.env
-          echo "  SPECIAL_CHANNEL_ID_2=${{ secrets.SPECIAL_CHANNEL_ID_2 }}" >> release.env
-          echo "  SYSTEM_PLAN=${{ secrets.SYSTEM_PLAN }}" >> release.env
-          echo "  SPECIAL_SYSTEM_PLAN=${{ secrets.SPECIAL_SYSTEM_PLAN }}" >> release.env
-          echo "  SPECIAL_SYSTEM_PLAN_CHANNEL_ID=${{ secrets.SPECIAL_SYSTEM_PLAN_CHANNEL_ID }}" >> release.env
-          echo "  SP_MODEL=${{ secrets.SP_MODEL }}" >> release.env
-          echo "  NL_MODEL=${{ secrets.NL_MODEL }}" >> release.env
-          echo "  VERIFY_ROLE_ID=${{ secrets.VERIFY_ROLE_ID }}" >> release.env
-          echo "  EMAIL_USER=${{ secrets.EMAIL_USER }}" >> release.env
-          echo "  EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> release.env
-          echo "  INVITE_LINK=${{ secrets.INVITE_LINK }}" >> release.env
+          echo "PROFILE=${{ secrets.PROFILE }}" >> dev.envdev.env
+          echo "TOKEN=${{ secrets.TOKEN }}" >> dev.env
+          echo "CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}" >> dev.env
+          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> dev.env
+          echo "  CHANNEL_ID_1=${{ secrets.CHANNEL_ID_1 }}" >> dev.env
+          echo "  CHANNEL_ID_2=${{ secrets.CHANNEL_ID_2 }}" >> dev.env
+          echo "  SPECIAL_CHANNEL_ID_1=${{ secrets.SPECIAL_CHANNEL_ID_1 }}" >> dev.env
+          echo "  SPECIAL_CHANNEL_ID_2=${{ secrets.SPECIAL_CHANNEL_ID_2 }}" >> dev.env
+          echo "  SYSTEM_PLAN=${{ secrets.SYSTEM_PLAN }}" >> dev.env
+          echo "  SPECIAL_SYSTEM_PLAN=${{ secrets.SPECIAL_SYSTEM_PLAN }}" >> dev.env
+          echo "  SPECIAL_SYSTEM_PLAN_CHANNEL_ID=${{ secrets.SPECIAL_SYSTEM_PLAN_CHANNEL_ID }}" >> dev.env
+          echo "  SP_MODEL=${{ secrets.SP_MODEL }}" >> dev.env
+          echo "  NL_MODEL=${{ secrets.NL_MODEL }}" >> dev.env
+          echo "  VERIFY_ROLE_ID=${{ secrets.VERIFY_ROLE_ID }}" >> dev.env
+          echo "  EMAIL_USER=${{ secrets.EMAIL_USER }}" >> dev.env
+          echo "  EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> dev.env
+          echo "  INVITE_LINK=${{ secrets.INVITE_LINK }}" >> dev.env
 
       - name: Build and push
         uses: docker/build-push-action@v2
@@ -52,4 +52,4 @@ jobs:
           tags: ema1in/takeshi-kun:latest
 
       - name: Run Docker container with custom env file
-        run: docker run --env-file release.env ema1in/takeshi-kun:latest
+        run: docker run --env-file dev.env ema1in/takeshi-kun:latest
