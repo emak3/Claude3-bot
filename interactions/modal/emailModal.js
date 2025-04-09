@@ -1,6 +1,5 @@
 const { InteractionType, MessageFlags } = require("discord.js");
 const { sendVerificationEmail } = require('../../email/mailer.js');
-//const { sendVerificationEmail } = require('../../email.js');
 const { getConfig } = require('../../config.js');
 const nodemailer = require('nodemailer');
 const log = require("../../logger.js");
