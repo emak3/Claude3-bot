@@ -16,7 +16,7 @@ module.exports = {
             name: 'Model: Claude 3.5 2024/10/22',
             type: ActivityType.Playing
         });
-        log.info('Bot is online!');
+        log.info('online!');
 
         const commands = [];
         for (const command of client.commands.values()) {
