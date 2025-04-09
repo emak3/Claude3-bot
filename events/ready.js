@@ -13,7 +13,7 @@ module.exports = {
         await oldHanhan(client);
     
         client.user.setActivity({
-            name: 'Model: Claude 3.5 haiku 2024/10/22',
+            name: 'Model: Claude 3.5 2024/10/22',
             type: ActivityType.Playing
         });
         log.info('Bot is online!');
