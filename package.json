@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "node --env-file=dev.env index.js",
-    "debug": "nodemon --env-file=dev.env index.js",
+    "debug": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
