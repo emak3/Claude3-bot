@@ -4,7 +4,7 @@ const { getConfig } = require('../config.js');
 module.exports = {
     command: new SlashCommandBuilder()
             .setName("verify")
-            .setDescription("verify key gen")
+            .setDescription("verify key gen (管理者コマンド)")
             .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
             .setContexts(InteractionContextType.Guild),
     /**
