@@ -1,13 +1,17 @@
 pipeline {
     agent any
+    tools {
+        nodejs "Node20" // グローバルツール構成でNode 20を登録してある場合
+    }
     stages {
-        stage('Run Shell') {
+        stage('Install') {
             steps {
-                // Git Bashを使う例
-                bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "echo Hello from bash"'
-                
-                // WSLを使う例
-                // bat 'wsl bash -c "echo Hello from WSL bash"'
+                sh 'npm ci'
+            }
+        }
+        stage('Run Bot') {
+            steps {
+                bat 'npm start'
             }
         }
     }
