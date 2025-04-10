@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourname/your-bot-repo.git'
+                git 'https://github.com/emak3/Claude3-bot.git'
             }
         }
         stage('Install') {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Restart Bot') {
             steps {
-                bat 'pm2 start index.js --name "discord-bot" || pm2 reload discord-bot'
+                bat 'pm2 start index.js --name "Claude3-bot" || pm2 reload Claude3-bot'
             }
         }
     }
