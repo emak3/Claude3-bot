@@ -28,6 +28,6 @@ module.exports = {
             .setStyle(ButtonStyle.Primary);
         const buttons = new ActionRowBuilder()
             .addComponents(confirm, cancel, member);
-        await interaction.reply({ content: `【 ${getConfig().EMAIL_USER} 】から認証コードが届きます。\n> 🔗 [招待リンク](${getConfig().inviteLink})`, components: [buttons] });
+        await interaction.reply({ content: `【 ${getConfig().EMAIL_USER} 】から認証コードが届きます。\n> 🔗 [招待URL](${getConfig().inviteLink})`, components: [buttons] });
     }
 }
