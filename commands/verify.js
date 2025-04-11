@@ -21,8 +21,13 @@ module.exports = {
             .setLabel('認証コードを入力')
             .setEmoji('📝')
             .setStyle(ButtonStyle.Secondary);
+        const member = new ButtonBuilder()
+            .setCustomId('member')
+            .setLabel('在籍簿')
+            .setEmoji('📖')
+            .setStyle(ButtonStyle.Primary);
         const buttons = new ActionRowBuilder()
-            .addComponents(confirm, cancel);
+            .addComponents(confirm, cancel, member);
         await interaction.reply({ content: `【 ${getConfig().EMAIL_USER} 】から認証コードが届きます。\n> 🔗 [招待リンク](${getConfig().inviteLink})`, components: [buttons] });
     }
 }
